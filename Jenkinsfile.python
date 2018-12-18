@@ -1,0 +1,25 @@
+pipeline{
+    agent any
+    stages{
+         stage("Clone Code"){
+            steps{
+                git branch: 'master', url: 'https://github.com/Devops-Training-Tyda/Python-Sample.git'            
+            }
+        }
+        stage("Build The Code"){
+            steps{
+                sh "python3 run.py"
+            }
+        }
+        stage("Run Tests"){
+            steps{
+                sh "python3 test.py"
+            }
+        }
+    }
+    post{
+        always {  
+            cleanWs()
+        }
+    }
+}
