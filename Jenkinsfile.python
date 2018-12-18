@@ -10,7 +10,7 @@ pipeline{
             parallel {
                 stage('Branch A') {
                     steps {
-                        sh "python3 run.py"
+                        sh "python run.py"
                     }
                 }
                 stage('Branch B') {
