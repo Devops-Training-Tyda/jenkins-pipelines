@@ -14,8 +14,8 @@ pipeline{
                 }
             }
             post{
-                always {  
-                        echo "Sucess 1st"
+                always {
+                    echo "Sucess 1st"
                 }
             }
         }
