@@ -1,3 +1,6 @@
+def combine(String FNAME, String LNAME){
+    return FNAME + " " +LNAME
+}
 pipeline{
     agent any
     parameters {
@@ -13,9 +16,7 @@ pipeline{
         stage("Install The Dependency"){
             steps{
                 script {
-                    def combine(String FNAME, String LNAME){
-                        return FNAME + " " +LNAME
-                    }
+                    
                     echo combine("Vinit", "Kumar")
                 }
             }
