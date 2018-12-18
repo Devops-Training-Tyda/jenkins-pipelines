@@ -8,7 +8,11 @@ pipeline{
         }
         stage("Build The Code"){
             steps{
-                sh "python3 run.py"
+                script {
+                    echo "Hello i am 1st"
+                    echo "Hello i am 1st"
+                    python3 run.py
+                }
             }
         }
         stage("Run Tests"){
