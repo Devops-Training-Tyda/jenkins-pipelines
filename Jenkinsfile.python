@@ -8,14 +8,22 @@ pipeline{
         }
         stage("Build The Code"){
             steps{
-                script {
-                    echo "Hello i am 1st"
-                    sh "python3 run.py"
-                }
-            }
-            post{
-                always {
-                    echo "Sucess 1st"
+                parallel {
+                    stage('Branch A') {
+                        steps {
+                        sh "python3 run.py"
+                        }
+                    }
+                    stage('Branch B') {
+                        steps {
+                            sh "python3 run.py"
+                        }
+                    }
+                    stage('Branch C') {
+                        steps {
+                        sh "python3 run.py"
+                        }
+                    }
                 }
             }
         }
