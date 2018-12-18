@@ -12,13 +12,12 @@ pipeline{
                     echo "Hello i am 1st"
                     sh "python3 run.py"
                 }
-                post{
-                    always {  
-                         echo "Sucess 1st"
-                    }
+            }
+            post{
+                always {  
+                        echo "Sucess 1st"
                 }
             }
-            
         }
         stage("Run Tests"){
             steps{
