@@ -1,14 +1,15 @@
 pipeline{
     agent any
+    parameters {
+        string(name: 'RUN_TEST', defaultValue: 'YES', description: 'Do you want to run test?')
+    }
     stages{
          stage("Clone Code"){
             steps{
                 git branch: 'master', url: 'https://github.com/Devops-Training-Tyda/ReactJs-Basic.git'            
             }
         }
-        parameters {
-            string(name: 'RUN_TEST', defaultValue: 'YES', description: 'Do you want to run test?')
-        }
+        
         stage("Install The Dependency"){
             steps{
                 sh "python3 test.py"
