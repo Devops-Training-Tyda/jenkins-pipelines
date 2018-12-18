@@ -5,22 +5,19 @@ pipeline{
     }
     stages{
          stage("Clone Code"){
-            steps{
+            steps {
                 git branch: 'master', url: 'https://github.com/Devops-Training-Tyda/Python-Sample.git'            
             }
         }
         
         stage("Install The Dependency"){
             steps{
-                sh "python3 test.py"
-            }
-        }
-        stage("Run Tests"){
-            when{
-                equals expected: "YES", actual: RUN_TEST
-            }
-            steps{
-                sh "python3 test.py"
+                script {
+                    def combine(String FNAME, String LNAME){
+                        return FNAME + " " +LNAME
+                    }
+                    echo combine("Vinit", "Kumar")
+                }
             }
         }
     }
