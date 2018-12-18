@@ -7,22 +7,20 @@ pipeline{
             }
         }
         stage("Build The Code"){
-            steps{
-                parallel {
-                    stage('Branch A') {
-                        steps {
+            parallel {
+                stage('Branch A') {
+                    steps {
                         sh "python3 run.py"
-                        }
                     }
-                    stage('Branch B') {
-                        steps {
-                            sh "python3 run.py"
-                        }
-                    }
-                    stage('Branch C') {
-                        steps {
+                }
+                stage('Branch B') {
+                    steps {
                         sh "python3 run.py"
-                        }
+                    }
+                }
+                stage('Branch C') {
+                    steps {
+                    sh "python3 run.py"
                     }
                 }
             }
