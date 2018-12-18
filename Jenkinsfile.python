@@ -16,7 +16,7 @@ pipeline{
         }
         stage("Run Tests"){
             when{
-                RUN_TEST "YES"
+                equals expected: "YES", actual: RUN_TEST
             }
             steps{
                 sh "python3 test.py"
