@@ -11,7 +11,7 @@ pipeline{
                 script {
                     echo "Hello i am 1st"
                     echo "Hello i am 1st"
-                    python3 run.py
+                    sh "python3 run.py"
                 }
             }
         }
