@@ -3,29 +3,21 @@ pipeline{
     stages{
          stage("Clone Code"){
             steps{
-                git branch: 'master', url: 'https://github.com/Devops-Training-Tyda/Python-Sample.git'            
+                git branch: 'master', url: 'https://github.com/Devops-Training-Tyda/ReactJs-Basic.git'            
             }
         }
-        stage("Build The Code"){
-            parallel {
-                stage('Branch A') {
-                    steps {
-                        sh "python run.py"
-                    }
-                }
-                stage('Branch B') {
-                    steps {
-                        sh "python3 run.py"
-                    }
-                }
-                stage('Branch C') {
-                    steps {
-                    sh "python3 run.py"
-                    }
-                }
+        parameters {
+            string(name: 'RUN_TEST', defaultValue: 'YES', description: 'Do you want to run test?')
+        }
+        stage("Install The Dependency"){
+            steps{
+                sh "python3 test.py"
             }
         }
         stage("Run Tests"){
+            when{
+                RUN_TEST "YES"
+            }
             steps{
                 sh "python3 test.py"
             }
