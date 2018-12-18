@@ -6,7 +6,7 @@ pipeline{
     stages{
          stage("Clone Code"){
             steps{
-                git branch: 'master', url: 'https://github.com/Devops-Training-Tyda/ReactJs-Basic.git'            
+                git branch: 'master', url: 'https://github.com/Devops-Training-Tyda/Python-Sample.git'            
             }
         }
         
