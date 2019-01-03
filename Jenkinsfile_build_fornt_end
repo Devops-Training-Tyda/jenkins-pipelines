@@ -6,8 +6,8 @@ pipeline{
         stage("Build the code"){
             steps{
                 script{
-                    echo `uuid` >> index.html
-                    tar -zcvf ${uuid}.tar.gz index.html
+                    echo randomIDGet >> index.html
+                    tar -zcvf ${randomIDGet}.tar.gz index.html
                 } 
             }
         }
