@@ -1,0 +1,18 @@
+pipeline{
+    agent any
+    parameters { 
+        string(name: 'ARTIFACT_NAME', defaultValue: '', description: 'Unique name of artifact') 
+    }
+    stages{
+        stage("Download Artifact"){
+            steps{
+                sh "pwd"
+            }
+        }
+    }
+    post{
+        always {  
+            cleanWs()
+        }
+    }
+}
