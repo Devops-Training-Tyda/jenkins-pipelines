@@ -1,8 +1,5 @@
 pipeline{
     agent any
-     environment {
-        randomID = ""
-    } 
     stages{
         stage("Build the code"){
             steps{
