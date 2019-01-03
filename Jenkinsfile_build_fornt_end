@@ -1,14 +1,15 @@
 pipeline{
     agent any
      environment {
-        randomID = "111111"
+        
     } 
     stages{
         stage("Build the code"){
             steps{
                 script{
+                    randomID="111111"
                     echo $randomID >> index.html
-                    tar -zcvf $randomID.tar.gz index.html
+                    tar -zcvf ${randomID}.tar.gz index.html
                 } 
             }
         }
