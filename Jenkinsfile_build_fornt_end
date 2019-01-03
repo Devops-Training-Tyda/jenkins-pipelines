@@ -8,7 +8,8 @@ pipeline{
             steps {  
                 script{
                     def randomID = sh(script: 'uuid', returnStdout: true)
-                    println(randomID)
+                    echo "${randomID}" >> index.html
+                    cat index.html
                 } 
             }
         }
