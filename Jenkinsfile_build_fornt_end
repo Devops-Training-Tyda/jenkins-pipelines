@@ -7,13 +7,13 @@ pipeline{
             steps{
                 script{
                     echo randomIDGet
-                    tar -zcvf ${randomIDGet}.tar.gz index.html
+                    #tar -zcvf ${randomIDGet}.tar.gz index.html
                 } 
             }
         }
         stage("upload artifact"){
             steps{
-                echo randomIDGet
+                #echo randomIDGet
                 #curl -v -u admin:admin123 --upload-file index.html http://localhost:8081/repository/artifacts/hello/index.html
             }
         }
