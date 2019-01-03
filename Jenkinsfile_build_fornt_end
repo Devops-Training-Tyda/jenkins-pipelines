@@ -8,7 +8,7 @@ pipeline{
             steps{
                 script{
                     echo $randomID >> index.html
-                    tar -zcvf ${randomID}.tar.gz index.html
+                    tar -zcvf $randomID.tar.gz index.html
                 } 
             }
         }
