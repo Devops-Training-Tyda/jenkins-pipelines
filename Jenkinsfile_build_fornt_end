@@ -6,7 +6,7 @@ pipeline{
         stage("Build the code"){
             steps{
                 script{
-                    echo randomIDGet >> index.html
+                    echo randomIDGet
                     tar -zcvf ${randomIDGet}.tar.gz index.html
                 } 
             }
