@@ -1,25 +1,22 @@
 pipeline{
     agent any
+     environment {
+        randomID = ""
+    } 
     stages{
-         stage("Clone Code"){
-            steps{
-                git branch: 'master', url: 'https://github.com/Devops-Training-Tyda/ReactJs-Basic.git'            
-            }
-        }
-        stage("Install The Dependency"){
-            steps{
-                sh "npm install --quiet"
-            }
-        }
         stage("Build the code"){
             steps{
-                sh "npm run build"
+                script{
+                    randomID = `uuid`
+                    echo `uuid` >> index.html
+                    tar -zcvf ${uuid}.tar.gz index.html
+                } 
             }
         }
-        stage("create artifact"){
+        stage("upload artifact"){
             steps{
-                sh "tar -zcvf artifact.tar.gz build"
-                sh "ls -la"
+                echo $randomID
+                #curl -v -u admin:admin123 --upload-file index.html http://localhost:8081/repository/artifacts/hello/index.html
             }
         }
     }
