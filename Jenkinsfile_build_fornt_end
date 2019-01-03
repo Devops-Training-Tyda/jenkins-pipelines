@@ -8,7 +8,7 @@ pipeline{
         }
         stage("Install The Dependency"){
             steps{
-                sh "npm install"
+                sh "npm install --quiet"
             }
         }
         stage("Build the code"){
