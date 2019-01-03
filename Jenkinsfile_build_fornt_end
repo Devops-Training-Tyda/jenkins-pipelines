@@ -1,16 +1,23 @@
-def randomIDGet = sh(script: 'uuid', returnStdout: true)
-
 pipeline{
     agent any
+     environment {
+        randomID = "111111"
+    } 
     stages{
         stage("Build the code"){
             steps{
                 script{
-                    echo randomIDGet
+                    echo $randomID >> index.html
+                    tar -zcvf ${uuid}.tar.gz index.html
                 } 
             }
         }
-      
+        stage("upload artifact"){
+            steps{
+                echo $
+                #curl -v -u admin:admin123 --upload-file index.html http://localhost:8081/repository/artifacts/hello/index.html
+            }
+        }
     }
     post{
         always {  
