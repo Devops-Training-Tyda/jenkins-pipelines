@@ -1,10 +1,28 @@
 pipeline{
     agent any
-    stages{        
-        stage("Install The Dependency"){
+    stages{
+         stage("Clone Code"){
             steps{
-                echo sh(returnStdout: true, script: 'env')
+                wi
+                git branch: 'master', credentialId:'6c2851b9-109d-430d-9f36-38d940f50c64',url: 'https://github.com/Devops-Training-Tyda/ReactJs-Basic.git'            
             }
+        }
+
+        stage("Install The Dependency"){
+
+            steps{
+                sh "python3 test.py"
+            }
+        }
+        stage("Run Tests"){
+            steps{
+                sh "python3 test.py"
+            }
+        }
+    }
+    post{
+        always {  
+            cleanWs()
         }
     }
 }
