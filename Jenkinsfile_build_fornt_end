@@ -18,19 +18,13 @@ pipeline{
             steps {
                 sh """
                     npm run build
-                    tar -zcvf "${buildUniqueId}".tar.gz build
+                    tar -zcvf "${buildUniqueId}".tar build
                 """
             }
         }
         stage("Upload Artifact on Nexus"){
             steps {
-                 sh """
-                   curl -v \
-                        -F "p=tar.gz" \
-                        -F "file=@./${buildUniqueId}.tar.gz" \
-                        -u admin:admin123 \
-                        http://localhost:8081/repository/artifacts/hello/"${buildUniqueId}".tar
-                """
+                sh "curl -v -u admin:admin123 --upload-file "./${buildUniqueId}".tar http://localhost:8081/repository/artifacts/hello/"${buildUniqueId}".tar"
             }
         }
     }
