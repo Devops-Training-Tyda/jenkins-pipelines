@@ -24,7 +24,7 @@ pipeline{
                     remote.password = "9edE0fvJ"
                     sshCommand remote: remote, command: "cd prod && mkdir "+ params.ARTIFACT_NAME
                     sshPut remote: remote, from: params.ARTIFACT_NAME + '.tar.gz', into: 'prod/' + params.ARTIFACT_NAME
-                    sshCommand remote: remote, command: 'cd prod/'+ params.ARTIFACT_NAME + " && tar -xvzf " + params.ARTIFACT_NAME + ".tar.gz"
+                    sshCommand remote: remote, command: 'cd prod/'+ params.ARTIFACT_NAME + " && tar -xvzf " + params.ARTIFACT_NAME + ".tar.gz && cd build && mv * ../"
                 }
             }
         }
