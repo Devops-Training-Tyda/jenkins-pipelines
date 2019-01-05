@@ -6,7 +6,10 @@ pipeline{
     stages{
         stage("Download Artifact"){
             steps{
-                sh "pwd"
+                sh """
+                    curl --remote-name http://localhost:18081/repository/artifacts/hello/"${ARTIFACT_NAME}".tar.gz
+                    ls -la
+                """
             }
         }
     }
