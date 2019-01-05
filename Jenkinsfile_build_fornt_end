@@ -11,7 +11,7 @@ pipeline{
                     tar -zcvf "${buildUniqueId}".tar index.html
                     cat index.html
                     ls -l
-                """N
+                """
             }
         }
     }
