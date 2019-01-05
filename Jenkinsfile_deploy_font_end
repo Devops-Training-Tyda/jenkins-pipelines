@@ -23,7 +23,7 @@ pipeline{
                     remote.user = "root"
                     remote.password = "9edE0fvJ"
                     sshCommand remote: remote, command: 'cd /prod'
-                    sshPut remote: remote, from: '"${ARTIFACT_NAME}".tar.gz', into: '.'
+                    sshPut remote: remote, from: '${params.ARTIFACT_NAME}.tar.gz', into: '.'
                     sshCommand remote: remote, command: 'ls -l'
                 }
             }
