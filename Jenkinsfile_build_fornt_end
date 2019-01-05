@@ -4,8 +4,10 @@ pipeline{
         stage("Build the code"){
             steps {  
                 script{
-                    def randomID = sh(script: 'uuid', returnStdout: true)
-                    echo "${randomID}" >> index.html
+                    myvar="test";
+                    echo "$myvar" > index.html
+                    tar -zcvf "$myvar".tar index.html
+                    ls -la
                     cat index.html
                 } 
             }
