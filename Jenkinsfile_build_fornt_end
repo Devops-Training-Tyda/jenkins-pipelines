@@ -4,10 +4,12 @@ pipeline{
         buildUniqueId = "`uuid`"
     }
     stages{
-        stage("Build the code"){
+        stage("Clone the code"){
             steps{
                 git branch: 'master',url: 'https://github.com/Devops-Training-Tyda/ReactJs-Basic.git'            
             }
+        }
+        stage("Build the code"){
             steps {
                 sh """
                     npm install
