@@ -23,7 +23,6 @@ pipeline{
         stage("Upload Artifact on Nexus"){
             steps {
                 sh """
-                    ls -la
                     curl -v -u admin:admin123 --upload-file "${env.BUILD_NUMBER}".tar.gz http://localhost:8081/repository/artifacts/hello/"${env.BUILD_NUMBER}".tar.gz
                 """
             }
