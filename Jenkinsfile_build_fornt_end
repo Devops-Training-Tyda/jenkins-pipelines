@@ -1,10 +1,14 @@
 pipeline{
     agent any
+    environment {
+        //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
+        myVar = "test"
+        VERSION = readMavenPom().getVersion()
+    }
     stages{
         stage("Build the code"){
             steps {  
                 sh """
-                    myVar="test";
                     echo "${myvar}" > index.html
                     ls -l
                 """
