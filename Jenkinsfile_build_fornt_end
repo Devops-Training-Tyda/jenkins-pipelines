@@ -24,7 +24,9 @@ pipeline{
         }
         stage("Upload Artifact on Nexus"){
             steps {
-                sh "curl -v -u admin:admin123 --upload-file './${buildUniqueId}.tar.gz' http://localhost:8081/repository/artifacts/hello/${buildUniqueId}.tar.gz"
+                sh """
+                    curl -v -u admin:admin123 --upload-file "${buildUniqueId}".tar.gz' http://localhost:8081/repository/artifacts/hello/"${buildUniqueId}".tar.gz
+                """
             }
         }
     }
