@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment {
-        buildUniqueId = "`git rev-parse --verirify HEAD`"
+        buildUniqueId = "$(git rev-parse --verirify HEAD)"
     }
     stages{
         stage("Clone the code"){
@@ -26,8 +26,6 @@ pipeline{
         stage("Upload Artifact on Nexus"){
             steps {
                 sh """
-                    chmod 777 "${buildUniqueId}".tar.gz 
-                    ls -la
                     curl -v -u admin:admin123 --upload-file "${buildUniqueId}".tar.gz http://localhost:8081/repository/artifacts/hello/"${buildUniqueId}".tar.gz
                 """
             }
