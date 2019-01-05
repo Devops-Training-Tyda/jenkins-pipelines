@@ -6,7 +6,6 @@ pipeline{
                 script{
                     myvar="test";
                     echo "$myvar" > index.html
-                    # tar -zcvf "$myvar".tar index.html
                     ls -la
                     cat index.html
                 } 
