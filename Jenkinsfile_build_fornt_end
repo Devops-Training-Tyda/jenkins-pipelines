@@ -3,12 +3,11 @@ pipeline{
     stages{
         stage("Build the code"){
             steps {  
-                script{
-                    myvar="test";
-                    echo "$myvar" > index.html
-                    ls -la
-                    cat index.html
-                } 
+                sh """
+                    myVar="test";
+                    echo "${myvar}" > index.html
+                    ls -l
+                """
             }
         }
     }
