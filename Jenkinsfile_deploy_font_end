@@ -1,3 +1,8 @@
+def remote = [:]
+    remote.name = "node-1"
+    remote.host = "142.44.161.11"
+    remote.allowAnyHosts = true
+
 pipeline{
     agent any
     parameters { 
@@ -15,9 +20,6 @@ pipeline{
         stage("Deploy artifact"){
             steps{
                 script{
-                    remote.name = "node-1"
-                    remote.host = "142.44.161.11"
-                    remote.allowAnyHosts = true
                     remote.user = "root"
                     remote.password = "9edE0fvJ"
                     sshCommand remote: remote, command: 'ls -l'
