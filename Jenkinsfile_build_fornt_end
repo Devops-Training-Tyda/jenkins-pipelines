@@ -9,12 +9,17 @@ pipeline{
                 git branch: 'master',url: 'https://github.com/Devops-Training-Tyda/ReactJs-Basic.git'            
             }
         }
+        stage("Install Dependencies"){
+            steps{
+                sh "'npm' install --quiet"            
+            }
+        }
         stage("Build the code"){
             steps {
                 sh """
-                    npm install
-                    echo "${buildUniqueId}" > index.html
-                    tar -zcvf "${buildUniqueId}".tar index.html
+                    npm run build
+                    tar -zcvf "${buildUniqueId}".tar build
+                    ls -la
                 """
             }
         }
