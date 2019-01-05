@@ -1,16 +1,17 @@
 pipeline{
     agent any
     environment {
-        myVar = "`uuid`"
+        buildUniqueId = "`uuid`"
     }
     stages{
         stage("Build the code"){
             steps {  
                 sh """
-                    echo "${myvar}" > index.html
+                    echo "${buildUniqueId}" > index.html
+                    tar -zcvf "${buildUniqueId}".tar index.html
                     cat index.html
                     ls -l
-                """
+                """N
             }
         }
     }
