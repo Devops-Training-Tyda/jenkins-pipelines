@@ -16,7 +16,7 @@ pipeline{
                 sh """
                     npm run build
                     cd build
-                    tar -czf "${env.BUILD_NUMBER}".tar.gz --exclude=*.tar.gz .
+                    tar -zcvf "${env.BUILD_NUMBER}".tar.gz --exclude=*.tar.gz .
                     ls -la
                 """
             }
